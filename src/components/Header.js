@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 
 import * as styleHelper from "../helpers/styleHelper";
 import {Container, Image, Menu, Visibility} from 'semantic-ui-react'
@@ -20,9 +20,11 @@ class Header extends Component {
         <Menu borderless fixed={this.state.menuFixed && 'top'}
               style={this.state.menuFixed ? styleHelper.fixedMenuStyle : styleHelper.menuStyle}>
           <Container text>
-            <Menu.Item><Image size='mini' src='https://react.semantic-ui.com/logo.png'/></Menu.Item>
-            <Menu.Item as={Link} to='/'>Movie App</Menu.Item>
-            <Menu.Item as={Link} to='/movies'>Movies</Menu.Item>
+            <Menu.Item as={Link} to='/' exact="true">
+              <Image size='mini' src='https://react.semantic-ui.com/logo.png'/>
+              <Menu.Item header>Movie App</Menu.Item>
+            </Menu.Item>
+            <Menu.Item as={NavLink} to='/movies'>Movies</Menu.Item>
             <Menu.Item as='a'>Add New</Menu.Item>
           </Container>
         </Menu>

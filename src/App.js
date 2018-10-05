@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import {Container,} from 'semantic-ui-react'
 
 import MoviesPage from './components/pages/MoviesPage';
@@ -19,7 +19,9 @@ class App extends Component {
         <Header/>
 
         <Container text>
-          <Route path='/movies' component={MoviesPage}/>
+          <Switch>
+            <Route path='/movies' exact component={MoviesPage}/>
+          </Switch>
         </Container>
 
         <Footer/>
