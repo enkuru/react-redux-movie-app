@@ -1,7 +1,7 @@
 import * as newMovieActions from './../actions/newMovie';
 
 const initialState = {
-  movies: [],
+  newMovie: {},
   fetching: false,
   error: {}
 };
@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
     case newMovieActions.NEW_MOVIE_PENDING:
       return {...state, fetching: true};
     case newMovieActions.NEW_MOVIE_FULFILLED:
-      return {...state, fetching: false, movies: action.payload};
+      return {...state, fetching: false, newMovie: action.payload};
     case newMovieActions.NEW_MOVIE_REJECTED:
       return {...state, fetching: false, error: action.payload};
     default:

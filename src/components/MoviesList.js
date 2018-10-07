@@ -6,8 +6,6 @@ import {Grid} from 'semantic-ui-react';
 import HashLoader from 'react-spinners/HashLoader';
 
 const MoviesList = ({movies}) => {
-
-  console.log(movies);
   const emptyMessage = (
     <div>
       {

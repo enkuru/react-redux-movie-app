@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Image, Form} from 'semantic-ui-react'
+import PropTypes from 'prop-types';
 
 import InlineError from './InlineError';
 
@@ -10,20 +11,24 @@ class NewMovieForm extends Component {
     errors: {}
   };
 
-  handleChange = e => this.setState({[e.target.name]: [e.target.value]});
+  static propTypes = {
+    onNewMovieSubmit: PropTypes.func.isRequired,
+  };
+
+  handleChange = e => this.setState({[e.target.name]: e.target.value});
 
   onSubmit = () => {
-    console.log("bf on submit state->", this.state.errors);
     const errors = this.validate();
 
-    console.log("validate result->", errors);
     this.setState({errors});
+
+    if (!Object.keys(errors).length) {
+      this.props.onNewMovieSubmit(this.state);
+    }
   };
 
   validate = () => {
     const errors = {};
-
-    console.log(this.state);
 
     if (!this.state.title.length) errors.title = "Can't be blank";
     if (!this.state.cover.length) errors.cover = "Can't be blank";
@@ -31,16 +36,12 @@ class NewMovieForm extends Component {
     return errors;
   };
 
-  componentDidMount() {
-    console.log("componentDidMount state->", this.state.errors);
-  }
-
   render() {
     const {errors} = this.state;
     return (
       <div>
         <h2>New Movie</h2>
-        <Form onSubmit={this.onSubmit}>
+        <Form onSubmit={this.onSubmit} loading={this.props.newMovie.fetching}>
           <Form.Field error={!!errors.title}>
             <label>Title</label>
             {errors.title && <InlineError message={errors.title}/>}
