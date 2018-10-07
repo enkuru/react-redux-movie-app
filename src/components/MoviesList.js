@@ -27,7 +27,6 @@ const MoviesList = ({movies}) => {
   return (
     <div>
       <HashLoader color={'#35bdb2'} sizeUnit={"px"} size={40} loading={movies.fetching}/>
-
       {movies.movies.length ? moviesList : emptyMessage}
     </div>
   );

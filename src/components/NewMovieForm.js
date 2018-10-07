@@ -7,14 +7,22 @@ import InlineError from './InlineError';
 
 class NewMovieForm extends Component {
   state = {
-    title: '',
-    cover: '',
+    title: this.props.movie ? this.props.movie.title : '',
+    cover: this.props.movie ? this.props.movie.cover : '',
     errors: {}
   };
 
   static propTypes = {
     onNewMovieSubmit: PropTypes.func.isRequired,
   };
+
+  componentWillReceiveProps(nextProps) {
+    const {movie} = nextProps.newMovie;
+
+    if (movie.title && movie.title !== this.state.title) {
+      this.setState({title: movie.title, cover: movie.cover});
+    }
+  }
 
   handleChange = e => this.setState({[e.target.name]: e.target.value});
 
