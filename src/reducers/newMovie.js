@@ -14,8 +14,16 @@ export default (state = initialState, action) => {
     case newMovieActions.NEW_MOVIE_PENDING:
       return {...state, fetching: true};
     case newMovieActions.NEW_MOVIE_FULFILLED:
-      return {...state, fetching: false, done: true, newMovie: action.payload};
+      return {...state, fetching: false, done: true};
     case newMovieActions.NEW_MOVIE_REJECTED:
+      return {...state, fetching: false, error: action.payload};
+
+    //UPDATE MOVIE
+    case newMovieActions.UPDATE_MOVIE_PENDING:
+      return {...state, fetching: true};
+    case newMovieActions.UPDATE_MOVIE_FULFILLED:
+      return {...state, fetching: false, done: true};
+    case newMovieActions.UPDATE_MOVIE_REJECTED:
       return {...state, fetching: false, error: action.payload};
 
       //FETCH MOVIE
