@@ -12,9 +12,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 
 class App extends Component {
-  state = {};
-
-  render() {
+   render() {
     return (
       <div className="App">
         <Header/>
@@ -23,6 +21,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/movies' component={MoviesPage}/>
             <Route exact path='/movies/new' component={NewMoviePage}/>
+            <Route exact path='/movie/:_id' component={NewMoviePage}/>
           </Switch>
         </Container>
 
