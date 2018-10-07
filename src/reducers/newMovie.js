@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     //NEW MOVIE
     case newMovieActions.NEW_MOVIE_PENDING:
-      return {...state, fetching: true};
+      return {...state, fetching: true, done: false};
     case newMovieActions.NEW_MOVIE_FULFILLED:
       return {...state, fetching: false, done: true};
     case newMovieActions.NEW_MOVIE_REJECTED:
@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
 
     //UPDATE MOVIE
     case newMovieActions.UPDATE_MOVIE_PENDING:
-      return {...state, fetching: true};
+      return {...state, fetching: true, done: false};
     case newMovieActions.UPDATE_MOVIE_FULFILLED:
       return {...state, fetching: false, done: true};
     case newMovieActions.UPDATE_MOVIE_REJECTED:
@@ -28,7 +28,7 @@ export default (state = initialState, action) => {
 
       //FETCH MOVIE
     case newMovieActions.FETCH_MOVIE_PENDING:
-      return {...state, fetching: true};
+      return {...state, fetching: true, done: false};
     case newMovieActions.FETCH_MOVIE_FULFILLED:
       return {...state, fetching: false, movie: action.payload};
     case newMovieActions.FETCH_MOVIE_REJECTED:

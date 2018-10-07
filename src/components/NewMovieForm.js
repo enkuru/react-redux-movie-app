@@ -30,11 +30,9 @@ class NewMovieForm extends Component {
 
   onSubmit = () => {
     const errors = this.validate();
-
     this.setState({errors});
 
     const _id = this.state._id || this.props.newMovie.movie._id;
-
     if (!Object.keys(errors).length) {
       if (_id) {
         this.props.onUpdateMovieSubmit({...this.state, _id});
@@ -56,14 +54,13 @@ class NewMovieForm extends Component {
   render() {
     const {errors} = this.state;
 
-    const errorMessage =
-      this.props.newMovie.error.response &&
+    const errorMessage = this.props.newMovie.error.response &&
       <Message negative>
         <Message.Header>We're sorry</Message.Header>
         <p>A problem occurred while recording.</p>
       </Message>;
 
-    const form = (
+    const form =
       <Form onSubmit={this.onSubmit} loading={this.props.newMovie.fetching}>
         <Form.Field error={!!errors.title}>
           <label>Title</label>
@@ -80,8 +77,7 @@ class NewMovieForm extends Component {
         <Image src={this.state.cover} size='small'/>
         <div style={{clear: 'both', marginBottom: '10px'}}>&nbsp;</div>
         <Button positive type='submit'>Submit</Button>
-      </Form>
-    );
+      </Form>;
 
     return (
       <div>
