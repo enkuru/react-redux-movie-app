@@ -78,13 +78,14 @@ mongodb.MongoClient.connect(dbUrl, (err, db) => {
   });
 
   app.delete('/api/movies/:_id', (req, res) => {
-    db.collection('movies').deleteOne({_id: new mongodb.ObjectId(req.params._id)}, (err, r) => {
+    const _id = new mongodb.ObjectId(req.params._id);
+    db.collection('movies').deleteOne({_id}, (err, r) => {
       if (err) {
         res.status(500).json({errors: {global: err}});
         return;
       }
 
-      res.json({});
+      res.json({_id});
     })
   });
 
