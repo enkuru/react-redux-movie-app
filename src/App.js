@@ -6,6 +6,7 @@ import 'semantic-ui-css/semantic.min.css';
 import {Route, Switch} from 'react-router-dom';
 import {Container,} from 'semantic-ui-react'
 
+import HomePage from './components/pages/HomePage';
 import MoviesPage from './components/pages/MoviesPage';
 import NewMoviePage from './components/pages/NewMoviePage';
 import Footer from './components/Footer';
@@ -19,6 +20,7 @@ class App extends Component {
 
         <Container text>
           <Switch>
+            <Route exact path='/' component={HomePage}/>
             <Route exact path='/movies' component={MoviesPage}/>
             <Route exact path='/movies/new' component={NewMoviePage}/>
             <Route exact path='/movie/:_id' component={NewMoviePage}/>
