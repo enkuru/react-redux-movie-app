@@ -37,7 +37,7 @@ class NewMovieForm extends Component {
     if (!Object.keys(errors).length) {
       this.setState({redirect: true});
 
-      if (_id) {
+      if (!!_id) {
         this.props.onUpdateMovieSubmit({...this.state, _id});
       } else {
         this.props.onNewMovieSubmit(this.state);
